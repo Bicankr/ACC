@@ -39,5 +39,13 @@ CREATE TABLE `user` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `firma`;
+CREATE TABLE `firma` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nazev` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 -- 2012-08-03 16:56:26
