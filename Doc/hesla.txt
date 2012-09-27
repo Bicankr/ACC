@@ -1,0 +1,20 @@
+pristup na db server alsica :
+
+http://vpn.alsico.cz/phpmyadmin
+
+user : rpo
+heslo : mrsavoho
+
+databze rpo
+
+data_faze .. tabulka s hodnotami na jednotlivych fazich (vystup prikazu !mesX)
+data_global .. tabulka s hodnotami globalnich udaju  (vystup prikazu !mesg)
+data_stav .. tabulka se stavovymi hodnotami (vystup prikazu !rpos)
+zarizeni .. seznam regulatoru
+
+tyto tabulky uz obsahuji "ostra" data. Popis je v prilozenem souboru a vychazi z prikazu regulatoru.
+
+
+prikazy .. tabulka s prikazy pro regulator
+
+zatim neni funkcni
