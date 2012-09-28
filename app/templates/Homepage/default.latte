@@ -13,6 +13,9 @@
 {foreach $v1 as $task}
     <tr>
         <td>{$task->id}</td>
+        <td>{$task->datum}</td>
+        <td>{$task->regulator}</td>
+        <td>{$task->chyba}</td>
     </tr>
     {/foreach}{/block}
 </table>
