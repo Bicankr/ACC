@@ -5,7 +5,7 @@ SET foreign_key_checks = 0;
 SET time_zone = 'SYSTEM';
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-INSERT INTO `task` (`id`, `text`, `created`, `done`, `user_id`, `tasklist_id`) VALUES
+INSERT INTO `task` (`id`, `text`, `created`, `done`, `user_id`, `list_id`) VALUES
 (1,	'Provést analýzu',	'2011-12-06 12:30:00',	1,	2,	1),
 (2,	'Implementace úkolníčku',	'2011-12-06 12:35:50',	0,	3,	1),
 (3,	'Sepsání dokumentace',	'2011-12-07 16:23:30',	0,	2,	1),
@@ -17,7 +17,7 @@ INSERT INTO `task` (`id`, `text`, `created`, `done`, `user_id`, `tasklist_id`) V
 (9,	'Nastavení serveru',	'2011-12-13 17:52:14',	0,	2,	3),
 (10,	'Benchmark nového stroje',	'2011-12-15 11:21:52',	1,	2,	3);
 
-INSERT INTO `tasklist` (`id`, `title`) VALUES
+INSERT INTO `list` (`id`, `title`) VALUES
 (1,	'Projekt A'),
 (2,	'Projekt B'),
 (3,	'Projekt C');

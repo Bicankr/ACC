@@ -9,8 +9,8 @@ use Nette\Application\UI\Form;
 class UserPresenter extends BasePresenter
 {
 
-	/** @var Todo\UserTable */
-	private $users;
+	/** @var Todo\UserRepository */
+	private $userRepository;
 
 	/** @var Todo\Authenticator */
 	private $authenticator;
@@ -25,7 +25,7 @@ class UserPresenter extends BasePresenter
 			$this->redirect('Sign:in');
 		}
 
-		$this->users = $this->context->users;
+		$this->userRepository = $this->context->userRepository;
 		$this->authenticator = $this->context->authenticator;
 	}
 
@@ -63,7 +63,7 @@ class UserPresenter extends BasePresenter
 				$user->getIdentity()->username,
 				$values->oldPassword
 			));
-			$this->users->setPassword($user->getId(), $values->newPassword);
+			$this->userRepository->setPassword($user->getId(), $values->newPassword);
 
 			$this->flashMessage('Heslo bylo změněno.', 'success');
 			$this->redirect('Homepage:');

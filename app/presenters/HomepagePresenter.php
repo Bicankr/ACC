@@ -6,10 +6,9 @@
 class HomepagePresenter extends BasePresenter
 {
 
-	/** @var Todo\TaskTable */
-	private $tasks;
-
-
+	/** @var Todo\TaskRepository */
+	private $taskRepository;
+	private $v1;
 
 	protected function startup()
 	{
@@ -19,7 +18,9 @@ class HomepagePresenter extends BasePresenter
 			$this->redirect('Sign:in');
 		}
 
-		$this->tasks = $this->context->tasks;
+		$this->taskRepository = $this->context->taskRepository;
+		$this->v1 = $this->context->data_chybyRepository;
+		$this->template->v1 = $this->v1->findall();
 	}
 
 
@@ -27,7 +28,7 @@ class HomepagePresenter extends BasePresenter
 	/** @return Todo\TaskListControl */
 	public function createComponentIncompleteTasks()
 	{
-		return new Todo\TaskListControl($this->tasks->findIncomplete(), $this->tasks);
+		return new Todo\TaskListControl($this->taskRepository->findIncomplete(), $this->taskRepository);
 	}
 
 
@@ -35,9 +36,9 @@ class HomepagePresenter extends BasePresenter
 	/** @return Todo\TaskListControl */
 	public function createComponentUserTasks()
 	{
-		$incomplete = $this->tasks->findIncompleteByUser($this->getUser()->getId());
-		$control = new Todo\TaskListControl($incomplete, $this->tasks);
-		$control->displayTaskList = TRUE;
+		$incomplete = $this->taskRepository->findIncompleteByUser($this->getUser()->getId());
+		$control = new Todo\TaskListControl($incomplete, $this->taskRepository);
+		$control->displayList = TRUE;
 		$control->displayUser = FALSE;
 		return $control;
 	}

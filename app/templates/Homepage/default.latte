@@ -1,6 +1,6 @@
 {block content}
 
-<h1 n:block="title">Přehled úkolů</h1>
+<h1 n:block="title">Přehled</h1>
 
 <h2>Mé úkoly</h2>
 {control userTasks}
@@ -8,4 +8,11 @@
 <h2>Všechny nesplněné</h2>
 {control incompleteTasks}
 
-{/block}
+<h3>Bican test</h3>
+<table>
+{foreach $v1 as $task}
+    <tr>
+        <td>{$task->id}</td>
+    </tr>
+    {/foreach}{/block}
+</table>

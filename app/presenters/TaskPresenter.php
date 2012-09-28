@@ -12,14 +12,14 @@ use Nette\Application\UI\Form;
 class TaskPresenter extends BasePresenter
 {
 
-	/** @var Todo\TaskListTable */
-	private $taskLists;
+	/** @var Todo\ListRepository */
+	private $listRepository;
 
-	/** @var Todo\TaskTable */
-	private $tasks;
+	/** @var Todo\TaskRepository */
+	private $taskRepository;
 
-	/** @var Todo\UserTable */
-	private $users;
+	/** @var Todo\UserRepository */
+	private $userRepository;
 
 	/** @var Nette\Database\Table\ActiveRow */
 	private $list;
@@ -34,16 +34,16 @@ class TaskPresenter extends BasePresenter
 			$this->redirect('Sign:in');
 		}
 
-		$this->taskLists = $this->context->taskLists;
-		$this->tasks = $this->context->tasks;
-		$this->users = $this->context->users;
+		$this->listRepository = $this->context->listRepository;
+		$this->taskRepository = $this->context->taskRepository;
+		$this->userRepository = $this->context->userRepository;
 	}
 
 
 
 	public function actionDefault($id)
 	{
-		$this->list = $this->taskLists->find($id);
+		$this->list = $this->listRepository->find($id);
 		if ($this->list === FALSE) {
 			$this->setView('notFound');
 		}
@@ -53,7 +53,7 @@ class TaskPresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-		$this->template->taskList = $this->list;
+		$this->template->list = $this->list;
 	}
 
 
@@ -67,7 +67,7 @@ class TaskPresenter extends BasePresenter
 			$this->error('Wrong action');
 		}
 
-		return new Todo\TaskListControl($this->taskLists->tasksOf($this->list), $this->tasks);
+		return new Todo\TaskListControl($this->listRepository->tasksOf($this->list), $this->taskRepository);
 	}
 
 
@@ -77,7 +77,7 @@ class TaskPresenter extends BasePresenter
 	 */
 	protected function createComponentTaskForm()
 	{
-		$userPairs = $this->users->findAll()->fetchPairs('id', 'name');
+		$userPairs = $this->userRepository->findAll()->fetchPairs('id', 'name');
 
 		$form = new Form();
 		$form->addText('text', 'Úkol:', 40, 100)
@@ -100,7 +100,7 @@ class TaskPresenter extends BasePresenter
 	 */
 	public function taskFormSubmitted(Form $form)
 	{
-		$this->tasks->createTask($this->list->id, $form->values->text, $form->values->userId);
+		$this->taskRepository->createTask($this->list->id, $form->values->text, $form->values->userId);
 		$this->flashMessage('Úkol přidán.', 'success');
 		if (!$this->isAjax()) {
 			$this->redirect('this');

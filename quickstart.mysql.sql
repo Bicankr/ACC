@@ -12,17 +12,17 @@ CREATE TABLE `task` (
   `created` datetime NOT NULL,
   `done` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `user_id` int(10) unsigned NOT NULL,
-  `tasklist_id` int(10) unsigned NOT NULL,
+  `list_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `order` (`tasklist_id`,`done`,`created`),
+  KEY `order` (`list_id`,`done`,`created`),
   KEY `fk_user` (`user_id`),
   CONSTRAINT `fk_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `fk_tasklist` FOREIGN KEY (`tasklist_id`) REFERENCES `tasklist` (`id`)
+  CONSTRAINT `fk_list` FOREIGN KEY (`list_id`) REFERENCES `list` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `tasklist`;
-CREATE TABLE `tasklist` (
+DROP TABLE IF EXISTS `list`;
+CREATE TABLE `list` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
@@ -38,14 +38,6 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-DROP TABLE IF EXISTS `firma`;
-CREATE TABLE `firma` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nazev` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 
 -- 2012-08-03 16:56:26
