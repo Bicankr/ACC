@@ -16,14 +16,10 @@ class Data_chybyRepository extends Repository
 		return $list->related('task')->order('created');
 	}
 
-	/**
-	 * @return Nette\Database\Table\ActiveRow
-	 */
-	public function createList($title)
-	{
-		return $this->getTable()->insert(array(
-			'title' => $title
-		));
+
+	public function findAllByDatum()
+	{ 
+		return $this->getTable()->order('datum DESC');
 	}
 
 }
