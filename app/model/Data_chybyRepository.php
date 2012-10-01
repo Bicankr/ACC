@@ -13,13 +13,13 @@ class Data_chybyRepository extends Repository
 	 */
 	public function tasksOf(Nette\Database\Table\ActiveRow $list)
 	{
-		return $list->related('task')->order('created');
+		return $list->related('task')->limit(2);
 	}
 
 
 	public function findAllByDatum()
 	{ 
-		return $this->getTable()->order('datum DESC');
+		return $this->getTable()->limit(3);
 	}
 
 }

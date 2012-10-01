@@ -8,30 +8,31 @@ class HomepagePresenter extends BasePresenter
 
 	/** @var Todo\TaskRepository */
 	private $taskRepository;
-	private $v1;
+	private $faze, $faze1, $faze2, $faze3, $global;
 
 	protected function startup()
 	{
-		parent::startup();
+	    parent::startup();
 
-		if (!$this->getUser()->isLoggedIn()) {
-			$this->redirect('Sign:in');
-		}
+	    if (!$this->getUser()->isLoggedIn()) {
+		    $this->redirect('Sign:in');
+	    }
 
-		$this->taskRepository = $this->context->taskRepository;
-		$this->v1 = $this->context->data_chybyRepository;
-		$this->template->v1 = $this->v1->findall();
+	    $this->taskRepository = $this->context->taskRepository;
+	    $this->faze = $this->context->data_fazeRepository;
+	    $this->global = $this->context->data_globalRepository;
+
+	    $this->template->faze1 = $this->faze->fazeAktualni(1);
+	    $this->template->faze2 = $this->faze->fazeAktualni(2);
+	    $this->template->faze3 = $this->faze->fazeAktualni(3);
+	    $this->template->global = $this->global->globalAktualni(10);
 	}
-
-
 
 	/** @return Todo\TaskListControl */
 	public function createComponentIncompleteTasks()
 	{
 		return new Todo\TaskListControl($this->taskRepository->findIncomplete(), $this->taskRepository);
 	}
-
-
 
 	/** @return Todo\TaskListControl */
 	public function createComponentUserTasks()
@@ -42,5 +43,4 @@ class HomepagePresenter extends BasePresenter
 		$control->displayUser = FALSE;
 		return $control;
 	}
-
 }
