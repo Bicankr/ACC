@@ -7,30 +7,30 @@ use Nette\Application\UI\Form;
 /**
  * Base presenter for all application presenters.
  *
- * @property callable $newTasklistFormSubmitted
+ * @property callable $newListFormSubmitted
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
 
-	/** @var Todo\TaskListTable */
-	private $taskLists;
+	/** @var Todo\ListRepository */
+	private $listRepository;
 
 
 
 	protected function startup()
 	{
 		parent::startup();
-		$this->taskLists = $this->context->taskLists;
+		$this->listRepository = $this->context->listRepository;
 	}
 
 
 
 	public function beforeRender()
 	{
-		$this->template->taskLists = $this->taskLists->findAll()->order('title ASC');
+		$this->template->lists = $this->listRepository->findAll()->order('title ASC');
 		if ($this->isAjax()) {
 			$this->invalidateControl('flashMessages');
-		}
+	}
 	}
 
 
@@ -38,7 +38,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	/**
 	 * @return Nette\Application\UI\Form
 	 */
-	protected function createComponentNewTasklistForm()
+	protected function createComponentNewListForm()
 	{
 		if (!$this->getUser()->isLoggedIn()) {
 			$this->redirect('Sign:in');
@@ -49,18 +49,18 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 			->addRule(Form::FILLED, 'Musíte zadat název seznamu úkolů.');
 
 		$form->addSubmit('create', 'Vytvořit');
-		$form->onSuccess[] = $this->newTasklistFormSubmitted;
+		$form->onSuccess[] = $this->newListFormSubmitted;
 
 		return $form;
 	}
 
 
 
-	public function newTasklistFormSubmitted(Form $form)
+	public function newListFormSubmitted(Form $form)
 	{
-		$tasklist = $this->taskLists->createList($form->values->title);
+		$list = $this->listRepository->createList($form->values->title);
 		$this->flashMessage('Seznam úkolů založen.', 'success');
-		$this->redirect('Task:default', $tasklist->id);
+		$this->redirect('Task:default', $list->id);
 	}
 
 }

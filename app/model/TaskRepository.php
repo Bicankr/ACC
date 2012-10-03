@@ -1,0 +1,65 @@
+<?php
+
+namespace Todo;
+
+use Nette;
+
+
+
+class TaskRepository extends Repository
+{
+
+	/** @var string */
+	protected $tableName = 'task';
+
+
+
+	/**
+	 * @return Nette\Database\Table\Selection
+	 */
+	public function findIncomplete()
+	{
+		return $this->findBy(array('done' => false))->order('created ASC');
+	}
+
+
+
+	/**
+	 * @return Nette\Database\Table\Selection
+	 */
+	public function findIncompleteByUser($userId)
+	{
+		return $this->findIncomplete()->where(array(
+			'user_id' => $userId
+		));
+	}
+
+
+
+	/**
+	 * @param int $listId
+	 * @param string $task
+	 * @param int $assignedUser
+	 * @return Nette\Database\Table\ActiveRow
+	 */
+	public function createTask($listId, $task, $assignedUser)
+	{
+		return $this->getTable()->insert(array(
+			'text' => $task,
+			'user_id' => $assignedUser,
+			'created' => new \DateTime(),
+			'list_id' => $listId
+		));
+	}
+
+
+
+	/**
+	 * @param int $id
+	 */
+	public function markDone($id)
+	{
+		$this->findOneBy(array('id' => $id))->update(array('done' => 1));
+	}
+
+}

@@ -9,7 +9,7 @@ use Nette;
 /**
  * Reprezentuje repozitář pro databázovou tabulku.
  */
-abstract class Table extends Nette\Object
+abstract class Repository extends Nette\Object
 {
 
 	/** @var Nette\Database\Connection */

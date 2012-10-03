@@ -1,5 +1,6 @@
+/*** Layout ***/
 body {
-	font: 13px/1.5 sans-serif;
+	font: 14px/1.5 sans-serif;
 	margin: 0;
 	padding: 0;
 	background: #FFF;
@@ -12,6 +13,7 @@ body {
 }
 
 #header div.title {
+	color: white;
 	padding: 8px 0;
 	font-size: 150%;
 	text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px;
@@ -29,19 +31,15 @@ body {
 	right: 0;
 }
 
-#header div.user span {
-	font-weight: bold;
-}
-
 #header-inner {
-	width: 820px;
+	width: 900px;
 	margin: 0 auto;
 	position: relative;
 }
 
 #container {
 	overflow: hidden;
-	width: 820px;
+	width: 900px;
 	margin: 0 auto;
 }
 
@@ -50,14 +48,17 @@ body {
 	width: 210px;
 }
 
-#sidebar h2 {
-	color: #333;
-}
-
 #content {
 	margin-left: 220px;
 	padding: 20px;
 }
+
+#footer {
+	margin: 2em;
+	text-align: center;
+	font-size: smaller;
+}
+
 
 /*** Navigation ***/
 div.task-lists ul {
@@ -69,39 +70,32 @@ div.task-lists ul {
 
 div.task-lists li {
 	display: block;
-	margin: 1ex;
 }
 
 div.task-lists a {
 	text-decoration: none;
 	display: block;
-	font-size: 125%;
-	padding: 0 1ex 1px;
+	font-size: 120%;
 }
+
 
 /*** Typo ***/
-h1, h2 {
-	font-family: 'Trebuchet MS', 'Geneva CE', lucida, sans-serif;
-	font-weight: normal;
-}
-
 h1 {
-	color: #333;
 	font-size: 230%;
-	margin-top: 0 0 .6em;
+	font-weight: normal;
+	margin: 0 0 .6em;
 }
 
 h2 {
-	color: #0097E7;
-	font-size: 1.6em;
+	font-size: 140%;
+	font-weight: normal;
 	margin: 1em 0 .6em;
 }
 
 a {
 	color: #006aeb;
-	padding: 3px 3px;
 	text-decoration: none;
-	border-radius: 5px;
+	border-radius: 3px;
 }
 
 a:hover, a:active, a:focus {
@@ -113,7 +107,7 @@ table {
 	width: 100%;
 	border-collapse: separate;
 	border-spacing: 0;
-	margin-bottom: 1.4em;
+	margin: 1em 0 2em;
 }
 
 thead th {
@@ -150,7 +144,7 @@ table.tasks .created {
 	color: #A07D1F;
 }
 
-table.tasks .tasklist {
+table.tasks .list {
 	width: 65px;
 }
 
@@ -162,6 +156,7 @@ table.tasks .action {
 	width: 75px;
 }
 
+
 /*** Forms ***/
 fieldset {
 	border: none;
@@ -171,7 +166,7 @@ fieldset {
 
 legend {
 	font-weight: bold;
-	margin-left: 1em;
+	margin-left: 0;
 }
 
 label {
@@ -217,12 +212,15 @@ form ul.error li {
 	color: #8a1f11;
 }
 
-input[type=checkbox] {
-	vertical-align: middle;
+input[type=text], input[type=password], select {
+	border-radius: 3px;
+	border: 1px solid silver;
+	padding: .3em;
+	margin-right: .5em;
 }
 
-.task-form input[type=submit] {
-	float: right;
+input[type=checkbox] {
+	vertical-align: middle;
 }
 
 /*** Flash messages ***/
@@ -250,7 +248,8 @@ div.flash.error {
 	border-color: #FBC2C4;
 }
 
-/*** Ikonks ***/
+
+/*** Icons ***/
 .icon {
 	padding-left: 24px;
 	background-position: 0 50%;

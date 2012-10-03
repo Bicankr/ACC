@@ -12,12 +12,12 @@ use Nette,
  */
 class Authenticator extends Nette\Object implements Security\IAuthenticator
 {
-	/** @var UserTable */
+	/** @var UserRepository */
 	private $users;
 
 
 
-	public function __construct(UserTable $users)
+	public function __construct(UserRepository $users)
 	{
 		$this->users = $users;
 	}

@@ -6,11 +6,13 @@ use Nette;
 
 
 
-class UserTable extends Table
+class UserRepository extends Repository
 {
 
 	/** @var string */
 	protected $tableName = 'user';
+
+
 
 	/**
 	 * @return Nette\Database\Table\ActiveRow
@@ -19,6 +21,8 @@ class UserTable extends Table
 	{
 		return $this->findAll()->where('username', $username)->fetch();
 	}
+
+
 
 	/**
 	 * @param  int $id
@@ -30,4 +34,5 @@ class UserTable extends Table
 			'password' => Authenticator::calculateHash($password)
 		));
 	}
+
 }

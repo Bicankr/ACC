@@ -1,11 +1,98 @@
 {block content}
 
-<h1 n:block="title">Přehled úkolů</h1>
+    <h1 n:block="title">Přehled</h1>
 
-<h2>Mé úkoly</h2>
-{control userTasks}
+    <h2>Mé úkoly</h2>
+    {control userTasks}
 
-<h2>Všechny nesplněné</h2>
-{control incompleteTasks}
+    <h2>Všechny nesplněné</h2>
+    {control incompleteTasks}
 
+    <h3>Bican test</h3>
+    <table>
+	{foreach $faze1 as $value}
+	    <tr>
+		<th>Fáze</th>
+		<th>id</th>
+		<th>datum</th>
+		<th>v</th>
+		<th>i</th>
+		<th>p</th>
+		<th>q</th>
+		<th>s</th>
+		<th>pf</th>
+		<th>thd</th>
+	    </tr>
+	    <tr>
+		<td>{$value->faze}</td>
+		<td>{$value->id}</td>
+		<td>{$value->datum}</td>
+		<td>{$value->v}</td>
+		<td>{$value->i}</td>
+		<td>{$value->p}</td>
+		<td>{$value->q}</td>
+		<td>{$value->s}</td>
+		<td>{$value->pf}</td>
+		<td>{$value->thd}</td>
+	    </tr>
+	{/foreach}
+	{foreach $faze2 as $value}
+	    <tr>
+		<td>{$value->faze}</td>
+		<td>{$value->id}</td>
+		<td>{$value->datum}</td>
+		<td>{$value->v}</td>
+		<td>{$value->i}</td>
+		<td>{$value->p}</td>
+		<td>{$value->q}</td>
+		<td>{$value->s}</td>
+		<td>{$value->pf}</td>
+		<td>{$value->thd}</td>
+	    </tr>
+	{/foreach}
+	{foreach $faze3 as $value}
+	    <tr>
+		<td>{$value->faze}</td>
+		<td>{$value->id}</td>
+		<td>{$value->datum}</td>
+		<td>{$value->v}</td>
+		<td>{$value->i}</td>
+		<td>{$value->p}</td>
+		<td>{$value->q}</td>
+		<td>{$value->s}</td>
+		<td>{$value->pf}</td>
+		<td>{$value->thd}</td>
+	    </tr>
+	{/foreach}
+    </table>
+    <table>
+    	{foreach $global as $value}
+	    <tr>
+		<th>id</th>
+		<th>datum</th>
+		<th>h</th>
+		<th>f</th>
+		<th>i</th>
+		<th>p</th>
+		<th>q</th>
+		<th>s</th>
+		<th>pf</th>
+		<th>e</th>
+		<th>t</th>
+	    </tr>
+	    <tr>
+		<td>{$value->id}</td>
+		<td>{$value->datum}</td>
+		<td>{$value->h}</td>
+		<td>{$value->f}</td>
+		<td>{$value->i}</td>
+		<td>{$value->p}</td>
+		<td>{$value->q}</td>
+		<td>{$value->s}</td>
+		<td>{$value->pf}</td>
+		<td>{$value->e}</td>
+		<td>{$value->t}</td>
+	    </tr>
+	{/foreach}
+</table>
 {/block}

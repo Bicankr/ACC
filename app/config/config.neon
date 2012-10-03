@@ -26,10 +26,12 @@ common:
 	services:
 		authenticator: Todo\Authenticator
 
-		tasks: Todo\TaskTable
-		users: Todo\UserTable
-		taskLists: Todo\TaskListTable
-
+		taskRepository: Todo\TaskRepository
+		userRepository: Todo\UserRepository
+		listRepository: Todo\ListRepository
+		data_chybyRepository: Todo\Data_chybyRepository
+		data_fazeRepository: Todo\Data_fazeRepository
+		data_globalRepository: Todo\Data_globalRepository
 
 	factories:
 
