@@ -32,6 +32,7 @@ common:
 		data_chybyRepository: Todo\Data_chybyRepository
 		data_fazeRepository: Todo\Data_fazeRepository
 		data_globalRepository: Todo\Data_globalRepository
+		zarizeniRepository: Todo\zarizeniRepository
 
 	factories:
 

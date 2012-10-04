@@ -8,6 +8,7 @@ class HomepagePresenter extends BasePresenter
 
 	/** @var Todo\TaskRepository */
 	private $taskRepository;
+	private $zarizeniRepository;
 	private $faze, $faze1, $faze2, $faze3, $global;
 
 	protected function startup()
@@ -19,6 +20,7 @@ class HomepagePresenter extends BasePresenter
 	    }
 
 	    $this->taskRepository = $this->context->taskRepository;
+	    $this->zarizeniRepository = $this->context->zarizeniRepository;
 	    $this->faze = $this->context->data_fazeRepository;
 	    $this->global = $this->context->data_globalRepository;
 
@@ -31,7 +33,12 @@ class HomepagePresenter extends BasePresenter
 	/** @return Todo\TaskListControl */
 	public function createComponentIncompleteTasks()
 	{
-		return new Todo\TaskListControl($this->taskRepository->findIncomplete(), $this->taskRepository);
+	    return new Todo\TaskListControl($this->taskRepository->findIncomplete(), $this->taskRepository);
+	}
+
+	public function createComponentZarizeni()
+	{
+	    return new Todo\ZarizeniControl($this->zarizeniRepository->getZarizeni(), $this->zarizeniRepository);
 	}
 
 	/** @return Todo\TaskListControl */

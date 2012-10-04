@@ -1,0 +1,23 @@
+{snippet}
+<table class="tasks">
+	<thead>
+	<tr>
+		<th></th>
+		<th n:if="$displayList">Seznam</th>
+		<th>Úkol</th>
+		<th n:if="$displayUser">Přiřazeno</th>
+		<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	{foreach $tasks as $task}
+	<tr n:class="$iterator->isOdd() ? odd : even, $task->done ? done">
+	    <td class="text">{$task->id}</td>
+	    <td class="text">{$task->nazev}</td>
+	    <td class="text">{$task->telefon}</td>
+	    <td class="text">{$task->ip}</td>
+	</tr>
+	{/foreach}
+	</tbody>
+</table>
+{/snippet}

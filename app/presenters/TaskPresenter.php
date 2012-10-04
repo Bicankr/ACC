@@ -24,8 +24,6 @@ class TaskPresenter extends BasePresenter
 	/** @var Nette\Database\Table\ActiveRow */
 	private $list;
 
-
-
 	protected function startup()
 	{
 		parent::startup();
@@ -39,8 +37,6 @@ class TaskPresenter extends BasePresenter
 		$this->userRepository = $this->context->userRepository;
 	}
 
-
-
 	public function actionDefault($id)
 	{
 		$this->list = $this->listRepository->find($id);
@@ -49,14 +45,10 @@ class TaskPresenter extends BasePresenter
 		}
 	}
 
-
-
 	public function renderDefault()
 	{
 		$this->template->list = $this->list;
 	}
-
-
 
 	/**
 	 * @return Todo\TaskListControl
@@ -70,7 +62,14 @@ class TaskPresenter extends BasePresenter
 		return new Todo\TaskListControl($this->listRepository->tasksOf($this->list), $this->taskRepository);
 	}
 
+	protected function createComponentZarizeni()
+	{
+		if ($this->list === NULL) {
+			$this->error('Wrong action');
+		}
 
+		return new Todo\ZarizeniControl($this->listRepository->tasksOf($this->list), $this->taskRepository);
+	}
 
 	/**
 	 * @return Nette\Application\UI\Form
@@ -92,8 +91,6 @@ class TaskPresenter extends BasePresenter
 
 		return $form;
 	}
-
-
 
 	/**
 	 * @param  Nette\Application\UI\Form $form
