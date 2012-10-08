@@ -50,18 +50,6 @@ class TaskPresenter extends BasePresenter
 		$this->template->list = $this->list;
 	}
 
-	/**
-	 * @return Todo\TaskListControl
-	 */
-	protected function createComponentTaskList()
-	{
-		if ($this->list === NULL) {
-			$this->error('Wrong action');
-		}
-
-		return new Todo\TaskListControl($this->listRepository->tasksOf($this->list), $this->taskRepository);
-	}
-
 	protected function createComponentZarizeni()
 	{
 		if ($this->list === NULL) {

@@ -36,7 +36,7 @@ class ZarizeniControl extends Nette\Application\UI\Control
 	public function render()
 	{
 		$this->template->setFile(__DIR__ . '/Zarizeni.latte');
-		$this->template->tasks = $this->selected;
+		$this->template->zarizeni = $this->selected;
 		$this->template->displayUser = $this->displayUser;
 		$this->template->displayList = $this->displayList;
 		$this->template->render();

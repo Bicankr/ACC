@@ -131,12 +131,19 @@ tr.odd {
 	background-color: #FCFAF5;
 }
 
-table.tasks tr.done {
-	color: #888;
-	text-decoration: line-through;
+table.zarizeni {
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
 }
 
-table.tasks .created {
+table.zarizeni tr.done {
+    color: #888;
+    text-decoration: line-through;
+}
+
+table.zarizeni .created {
 	font-size: smaller;
 	width: 70px;
 	text-align: right;
@@ -144,16 +151,16 @@ table.tasks .created {
 	color: #A07D1F;
 }
 
-table.tasks .list {
+table.zarizeni .list {
 	width: 65px;
 }
 
-table.tasks .user {
+table.zarizeni .user {
 	font-size: smaller;
 }
 
-table.tasks .action {
-	width: 75px;
+table.zarizeni .action {
+    width: 75px;
 }
 
 
