@@ -23,16 +23,6 @@ class ZarizeniControl extends Nette\Application\UI\Control
 		$this->taskRepository = $taskRepository;
 	}
 
-	public function handleMarkDone($taskId)
-	{
-		$this->taskRepository->markDone($taskId);
-		if (!$this->presenter->isAjax()) {
-		$this->presenter->redirect('this');
-	}
-
-		$this->invalidateControl();
-	}
-
 	public function render()
 	{
 		$this->template->setFile(__DIR__ . '/Zarizeni.latte');

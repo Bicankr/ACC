@@ -2,43 +2,28 @@
 namespace Todo;
 use Nette;
 
-class ZarizeniControl extends Nette\Application\UI\Control
+class ZarizeniHodnotyControl extends Nette\Application\UI\Control
 {
-	/** @var boolean */
-	public $displayUser = TRUE;
+    private $faze;
+    private $global;
 
-	/** @var boolean */
-	public $displayList = FALSE;
+    public function __construct($Data_fazeRepository, $Data_globalRepository)
+    {
+	parent::__construct(); // vždy je potřeba volat rodičovský konstruktor
 
-	/** @var Nette\Database\Table\Selection */
-	private $selected;
+	$this->faze = $Data_fazeRepository;
+	$this->global = $Data_globalRepository;
+    }
 
-	/** @var TaskRepository */
-	private $taskRepository;
+    public function render()
+    {
+	$this->template->setFile(__DIR__ . '/ZarizeniHodnoty.latte');
 
-	public function __construct(Nette\Database\Table\Selection $selected, ZarizeniRepository $taskRepository)
-	{
-		parent::__construct(); // vždy je potřeba volat rodičovský konstruktor
-		$this->selected = $selected;
-		$this->taskRepository = $taskRepository;
-	}
+	$this->template->faze1 = $this->faze->fazeAktualni(1);
+	$this->template->faze2 = $this->faze->fazeAktualni(2);
+	$this->template->faze3 = $this->faze->fazeAktualni(3);
+	$this->template->global = $this->global->globalAktualni(10);
 
-	public function handleMarkDone($taskId)
-	{
-		$this->taskRepository->markDone($taskId);
-		if (!$this->presenter->isAjax()) {
-		$this->presenter->redirect('this');
-	}
-
-		$this->invalidateControl();
-	}
-
-	public function render()
-	{
-		$this->template->setFile(__DIR__ . '/Zarizeni.latte');
-		$this->template->zarizeni = $this->selected;
-		$this->template->displayUser = $this->displayUser;
-		$this->template->displayList = $this->displayList;
-		$this->template->render();
-	}
+	$this->template->render();
+    }
 }

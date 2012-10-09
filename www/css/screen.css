@@ -44,19 +44,33 @@ body {
 }
 
 #sidebar {
-	float: left;
-	width: 210px;
+    
+    float: left;
+    width: 210px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    background-color: orange;
 }
 
 #content {
-	margin-left: 220px;
-	padding: 20px;
+    margin-left: 220px;
+    padding: 20px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
 }
 
 #footer {
-	margin: 2em;
-	text-align: center;
-	font-size: smaller;
+    margin: 2em;
+    text-align: center;
+    font-size: smaller;
 }
 
 

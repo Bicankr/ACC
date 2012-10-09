@@ -26,7 +26,6 @@ common:
 	services:
 		authenticator: Todo\Authenticator
 
-		taskRepository: Todo\TaskRepository
 		userRepository: Todo\UserRepository
 		listRepository: Todo\ListRepository
 		data_chybyRepository: Todo\Data_chybyRepository
