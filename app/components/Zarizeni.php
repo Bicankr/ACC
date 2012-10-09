@@ -23,6 +23,11 @@ class ZarizeniControl extends Nette\Application\UI\Control
 		$this->taskRepository = $taskRepository;
 	}
 
+	public function handleSelect()
+	{
+	    $this->presenter->redirect('this');
+	}
+	
 	public function render()
 	{
 		$this->template->setFile(__DIR__ . '/Zarizeni.latte');
