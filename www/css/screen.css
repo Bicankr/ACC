@@ -13,10 +13,16 @@ a:hover, a:active, a:focus { background-color: #006aeb; text-decoration: none; c
 
 #banner { border-radius: 12px 12px 0 0;  
     background-color: #666666;
+    border-right-color: black;
+    border-left-color: black;
+    border-bottom-color: black;
+    border-top-color: black;
 }
 #banner h1 { color: white; font-size: 50px; line-height: 121px; margin: 0; padding-left: 40px;  text-shadow: 1px 1px 0 rgba(0, 0, 0, .9); }
 
-#content { background: white; border: 1px solid #eff4f7; border-radius: 0 0 12px 12px; padding: 10px 40px; }
+#content { background: white; border: 1px solid #eff4f7; border-radius: 0 0 12px 12px; padding: 10px 40px; 
+    height: 500px;
+}
 #content > h2 { font-size: 130%; color: #666; clear: both; padding: 1.2em 0; margin: 0; }
 
 h2 span { color: #87A7D5; }
@@ -53,3 +59,25 @@ footer { font-size: 70%; padding: 1em 0; color: gray; }
 .jush-clr { color: #007800; }
 .jush a { color: inherit; background: transparent; }
 .jush-latte { color: #D59401; font-weight: bold }
+
+table.zarizeni, table.detail
+{
+    border-radius: 5px 5px 5px 5px;
+    border-right-width: 2px;
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+    border-top-width: 2px;
+    border-right-color: black;
+    border-left-color: black;
+    border-bottom-color: black;
+    border-top-color: black;
+    width: 400px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    margin-top: 3px;
+    background-color: #cccccc;
+    height: 50px;
+}
+

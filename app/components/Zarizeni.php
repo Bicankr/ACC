@@ -14,18 +14,18 @@ class ZarizeniControl extends Nette\Application\UI\Control
 	private $selected;
 
 	/** @var TaskRepository */
-	private $taskRepository;
+	private $zarizeniRepository;
 
-	public function __construct(Nette\Database\Table\Selection $selected, ZarizeniRepository $taskRepository)
+	public function __construct(Nette\Database\Table\Selection $selected, ZarizeniRepository $zarizeniRepository)
 	{
-		parent::__construct(); // vždy je potřeba volat rodičovský konstruktor
-		$this->selected = $selected;
-		$this->taskRepository = $taskRepository;
+	    parent::__construct(); // vždy je potřeba volat rodičovský konstruktor
+	    $this->selected = $selected;
+	    $this->zarizeniRepository = $zarizeniRepository;
 	}
 
-	public function handleSelect()
+	public function handleSelect($val = 0)
 	{
-	    $this->presenter->redirect('this');
+	    $this->presenter->redirect('detail', $val);
 	}
 	
 	public function render()

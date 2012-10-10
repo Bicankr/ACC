@@ -12,5 +12,11 @@ class ZarizeniRepository extends Repository
     { 
 	return $this->getTable();
     }
+    
+    public function findById($id)
+    {
+	return $this->findAll()->where('id', $id)->fetch();
+    }
+
 
 }

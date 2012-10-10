@@ -1,0 +1,43 @@
+
+{block content}
+<div id="banner">
+    <h1 n:block=title>Alsico control center</h1>
+</div>
+
+<div id="content">
+    <table ><tr>
+	    <td><a n:href="menu! 'Aktuální hodnoty'">Aktuální hodnoty</a></td>
+	    <td><a n:href="menu! 'Alarmy'">Alarmy</a></td>
+	    <td><a n:href="menu! 'Události'">Události</a></td>
+	    <td><a n:href="menu! 'Ovládání'">Ovládání</a></td>
+	    <td><a n:href="menu! 'Grafy'">Grafy</a></td>
+	    <td><a n:href="menu! 'Export'">Export</a></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	</tr></table>
+    <h1 style="font-size: 25pt;">{$menu}</h1>
+<a n:href="close!" style="font-size: 25pt;">X</a>
+	{control zarizeniHodnoty}
+</div>
+
+<script src="http://jush.sourceforge.net/jush.js"></script>
+<script>
+	jush.create_links = false;
+	jush.highlight_tag('code');
+	$('code.jush').each(function(){ $(this).html($(this).html().replace(/\x7B[/$\w].*?\}/g, '<span class="jush-latte">$&</span>')) });
+
+	$('a[href^=#]').click(function(){
+		$('html,body').animate({ scrollTop: $($(this).attr('href')).show().offset().top - 5 }, 'fast');
+		return false;
+	});
+</script>
+{/block}
+
+{block head}
+<style>
+    body { background-color: black;}
+    #banner h1 { color: grey; font-size: 50px; line-height: 121px; margin: 0; padding-left: 40px;  text-shadow: 1px 1px 0 rgba(0, 0, 0, .9); }
+
+</style>
+{/block}
