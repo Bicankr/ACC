@@ -47,6 +47,8 @@ class HomepagePresenter extends BasePresenter {
     }
 
     public function handlemenu($val = '') {
+	if ($val == 'Zpět')
+	    $this->presenter->redirect('default');
 	$this->menu = $val;
     }
 
