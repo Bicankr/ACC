@@ -26,7 +26,7 @@ class HomepagePresenter extends BasePresenter
 	    $this->foo  = 'startup';
 	}
 
-	public function renderDefault()
+	public function renderDefault($id = 0)
 	{
 	    $this->template->foo = $this->foo;
 	}
