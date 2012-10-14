@@ -2,6 +2,7 @@
 <h1>{$zarizeni->nazev}</h1>
 <table class="detail">
 	{foreach $faze1 as $value}
+    {$u1 = $value->v}
     <tr>
 	<th>Fáze</th>
 	<th>datum</th>
@@ -81,4 +82,6 @@
     </tr>
 	{/foreach}
 </table>
+{$u1 = '120'}
+<img src="//chart.googleapis.com/chart?chxr=0,140,300&chxt=y&chbh=40,3,9&chs=170x225&cht=bvg&chco=A2C180,3D7930,FF9900&chds=0,260,-5,260,5,260&chd=t:{$u1}|240|250&chtt=U" width="170" height="225" alt="U" />
 {/snippet}
