@@ -2,7 +2,7 @@
 namespace Todo;
 use Nette;
 
-class ZarizeniHodnotyControl extends Nette\Application\UI\Control
+class ZarizeniGrafyControl extends Nette\Application\UI\Control
 {
     private $zarizeni; 
     private $faze;
@@ -19,13 +19,13 @@ class ZarizeniHodnotyControl extends Nette\Application\UI\Control
 
     public function render()
     {
-	$this->template->setFile(__DIR__ . '/ZarizeniHodnoty.latte');
+	$this->template->setFile(__DIR__ . '/ZarizeniGrafy.latte');
 
 	$this->template->zarizeni = $this->zarizeni;
-	$this->template->faze1 = $this->faze->fazeAktualni($this->zarizeni, 1);
-	$this->template->faze2 = $this->faze->fazeAktualni($this->zarizeni, 2);
-	$this->template->faze3 = $this->faze->fazeAktualni($this->zarizeni, 3);
-	$this->template->global = $this->global->globalAktualni(10);
+	$this->template->val1 = $this->faze->fazeHodina($this->zarizeni, 1);
+	$this->template->val2 = $this->faze->fazeHodina($this->zarizeni, 2);
+	$this->template->val3 = $this->faze->fazeHodina($this->zarizeni, 3);
+//	$this->template->faze1 = $this->faze->fazeHodina($this->zarizeni, 1);
 
 	$this->template->render();
     }

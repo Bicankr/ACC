@@ -6,9 +6,24 @@
 	<td class="text"><a n:href="select! $val->id">{$val->nazev}</a></td>
 	<td class="text">{$val->telefon}</td>
 	<td class="text">{$val->ip}</td>
+	<td>
+	    <table class="errors">
+		<tr>
+		    <td title="Bypass, vypnuto">
+		    </td>
+		    <td title="Teplota"></td>
+		    <td title="Ztráta spojení"></td>
+		    <td title="Změna nastavení"></td>
+		    <td title="Otevření skříně"></td>
+		</tr>
+	    </table>
+	</td>
     </tr>
     </tbody>
     </table>
+<abbr title="HyperText Markup Language">HTML</abbr>
+
+<acronym title="National Aeronautics and Space Administration">NASA</acronym>
     {/foreach}
 <img src="//chart.googleapis.com/chart?chxl=1:|Voltáž|Hot|3:|Low|High&chxt=x,x,y,y&chs=300x150&cht=lc&chco=76A4FB&chds=0,260&chd=t:45.902,6.557,0,6.557,18.033,8.197,14.754,11.475,11.475,11.475,16.393,32.787,57.377,75.41,100,75.41,75.41,37.705,32.787,45.902&chls=2&chma=40,20,20,30" width="300" height="150" alt="" />
 {/snippet}

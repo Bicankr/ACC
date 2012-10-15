@@ -42,6 +42,10 @@ class HomepagePresenter extends BasePresenter {
 	return new Todo\ZarizeniHodnotyControl($this->zarizeniRepository->FindById($this->id_zarizeni), $this->data_fazeRepository, $this->data_globalRepository);
     }
 
+    public function createComponentZarizeniGrafy() {
+	return new Todo\ZarizeniGrafyControl($this->zarizeniRepository->FindById($this->id_zarizeni), $this->data_fazeRepository, $this->data_globalRepository);
+    }
+
     public function handleclose() {
 	$this->presenter->redirect('default');
     }

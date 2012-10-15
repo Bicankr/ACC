@@ -1,8 +1,7 @@
 {snippet}
 <h1>{$zarizeni->nazev}</h1>
 <table class="detail">
-	{foreach $faze1 as $value}
-    {$u1 = $value->v}
+    {foreach $faze1 as $value}
     <tr>
 	<th>Fáze</th>
 	<th>datum</th>
@@ -17,7 +16,7 @@
     <tr>
 	<td>{$value->faze}</td>
 	<td>{$value->datum|date:'%d.%m.%Y'}</td>
-	<td>{$value->v|number:2}</td>
+	<td>{$u1 = $value->v|number:2}</td>
 	<td>{$value->i|number:2}</td>
 	<td>{$value->p|number:2}</td>
 	<td>{$value->q|number:2}</td>
@@ -30,7 +29,7 @@
     <tr>
 	<td>{$value->faze}</td>
 	<td>{$value->datum|date:'%d.%m.%Y'}</td>
-	<td>{$value->v|number:2}</td>
+	<td>{$u2 = $value->v|number:2}</td>
 	<td>{$value->i|number:2}</td>
 	<td>{$value->p|number:2}</td>
 	<td>{$value->q|number:2}</td>
@@ -43,7 +42,7 @@
     <tr>
 	<td>{$value->faze}</td>
 	<td>{$value->datum|date:'%d.%m.%Y'}</td>
-	<td>{$value->v|number:2}</td>
+	<td>{$u3 = $value->v|number:2}</td>
 	<td>{$value->i|number:2}</td>
 	<td>{$value->p|number:2}</td>
 	<td>{$value->q|number:2}</td>
@@ -81,7 +80,7 @@
 	<td>{$value->t|number:2}</td>
     </tr>
 	{/foreach}
+    <tr><td></td></tr>
 </table>
-{$u1 = '120'}
-<img src="//chart.googleapis.com/chart?chxr=0,140,300&chxt=y&chbh=40,3,9&chs=170x225&cht=bvg&chco=A2C180,3D7930,FF9900&chds=0,260,-5,260,5,260&chd=t:{$u1}|240|250&chtt=U" width="170" height="225" alt="U" />
+<img src="//chart.googleapis.com/chart?chxr=0,185,250&chxt=y&chbh=25&chs=300x150&cht=bvg&chco=FF9900,008000,224499&chds=180,250,180,250,180,250&chd=t:{$u1},{$u2},{$u3}&chma=|0,5&chtt=U" width="300" height="150" alt="U" />
 {/snippet}
