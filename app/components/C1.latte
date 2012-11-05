@@ -1,0 +1,28 @@
+{snippet}
+    {foreach $foo as $val}
+    <table class="zarizeni">
+    <tbody>
+    <tr>
+	<td class="text"><a n:href="select! $val->id">{$val->nazev}</a></td>
+	<td class="text">{$val->telefon}</td>
+	<td class="text">{$val->ip}</td>
+	<td>
+	    <table class="errors">
+		<tr>
+		    <td title="Bypass, vypnuto">
+		    </td>
+		    <td title="Teplota"></td>
+		    <td title="Ztráta spojení"></td>
+		    <td title="Změna nastavení"></td>
+		    <td title="Otevření skříně"></td>
+		</tr>
+	    </table>
+	</td>
+    </tr>
+    </tbody>
+    </table>
+    {/foreach}
+    <a class="ajax" n:href="FooMinus!">axMinus</a>
+    <a class="ajax" n:href="FooPlus!">axPlus</a>
+    <h1>C1 - {	}</h1>
+{/snippet}

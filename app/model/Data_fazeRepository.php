@@ -12,9 +12,13 @@ class Data_fazeRepository extends Repository
      * faze
      * */
     
-    public function fazeAktualni($zarizeni, $faze)
+    public function fazeAktualni($zarizeni, $faze, $id_old = 0)
     { 
-	return $this->findby(array('faze' => $faze, 'regulator' => $zarizeni))->order('datum DESC')->limit(1);
+    	if ($id_old == '0') 
+	    return $this->findby(array('faze' => $faze, 'regulator' => $zarizeni))->order('datum DESC')->limit(1);
+	else
+	    return $this->findby(array('faze' => $faze, 'regulator' => $zarizeni, 'id < ?' => $id_old))->order('datum DESC')->limit(1);
+	    
 	
     }
     public function fazeHodina($zarizeni, $faze)

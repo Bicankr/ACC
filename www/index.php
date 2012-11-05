@@ -1,8 +1,8 @@
 <?php
 
+//phpinfo();
 // uncomment this line if you must temporarily take down your site for maintenance
 // require '.maintenance.php';
-
 // absolute filesystem path to this web root
 define('WWW_DIR', __DIR__);
 

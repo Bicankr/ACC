@@ -15,9 +15,9 @@ common:
 			errorPresenter: Error
 
 		database:
-			dsn: 'mysql:host=localhost;dbname=test'
-			user:
-			password:
+			dsn: 'mysql:host=localhost;dbname=rpo'
+			user: rpo
+			password: mrsavoho
 
 		session:
 			expiration: 30 days
@@ -27,7 +27,6 @@ common:
 		authenticator: Todo\Authenticator
 
 		userRepository: Todo\UserRepository
-		listRepository: Todo\ListRepository
 		data_chybyRepository: Todo\Data_chybyRepository
 		data_fazeRepository: Todo\Data_fazeRepository
 		data_globalRepository: Todo\Data_globalRepository

@@ -20,14 +20,12 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	protected function startup()
 	{
 		parent::startup();
-		$this->listRepository = $this->context->listRepository;
 	}
 
 
 
 	public function beforeRender()
 	{
-		$this->template->lists = $this->listRepository->findAll()->order('title ASC');
 		if ($this->isAjax()) {
 			$this->invalidateControl('flashMessages');
 	}

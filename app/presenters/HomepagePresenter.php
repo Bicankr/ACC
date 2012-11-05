@@ -1,37 +1,50 @@
 <?php
 
-/**
- * Homepage presenter.
- */
 class HomepagePresenter extends BasePresenter {
 
     private $zarizeniRepository;
+    private $c1Repository;
+
     private $data_fazeRepository;
     private $data_globalRepository;
     private $id_zarizeni = 0;
-    private $foo;
-    private $menu;
+    /** @persistent */
+    public $menu;
 
     protected function startup() {
 	parent::startup();
 
-	if (!$this->getUser()->isLoggedIn()) {
+	 if (!$this->getUser()->isLoggedIn()) {
 	    $this->redirect('Sign:in');
 	}
-
+	
 	$this->zarizeniRepository = $this->context->zarizeniRepository;
+	$this->c1Repository = $this->context->zarizeniRepository;
 	$this->data_fazeRepository = $this->context->data_fazeRepository;
 	$this->data_globalRepository = $this->context->data_globalRepository;
-	$this->foo = 'startup';
     }
 
     public function renderDefault($id = 0) {
-	$this->template->foo = $this->foo;
     }
 
     public function renderDetail($id = 0) {
 	$this->id_zarizeni = $id;
 	$this->template->menu = $this->menu;
+    }
+
+    function handleChangeFoo1()
+    {
+	if ($this->isAjax())
+	{
+	    //$this->invalidateControl("pokus");
+	}
+    }
+    function handleChangeFoo2()
+    {
+	if ($this->isAjax())
+	{
+	    $this->invalidateControl("pokus");
+	}
     }
 
     public function createComponentZarizeni() {
@@ -44,6 +57,15 @@ class HomepagePresenter extends BasePresenter {
 
     public function createComponentZarizeniGrafy() {
 	return new Todo\ZarizeniGrafyControl($this->zarizeniRepository->FindById($this->id_zarizeni), $this->data_fazeRepository, $this->data_globalRepository);
+    }
+
+    protected function createComponentC1()
+    {
+	return new Todo\C1Control($this->zarizeniRepository->getZarizeni());
+    }
+    protected function createComponentC2()
+    {
+	return new Todo\C2Control(10);
     }
 
     public function handleclose() {
