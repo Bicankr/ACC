@@ -1,15 +1,10 @@
 <?php
-
 use Nette\Application\UI;
-
-
 /**
  * Sign in/out presenters.
  */
 class SignPresenter extends BasePresenter
 {
-
-
 	/**
 	 * Sign-in form factory.
 	 * @return Nette\Application\UI\Form
@@ -17,13 +12,13 @@ class SignPresenter extends BasePresenter
 	protected function createComponentSignInForm()
 	{
 		$form = new UI\Form;
-		$form->addText('username', 'Username:')
+		$form->addText('username', 'Jméno:')
 			->setRequired('Please enter your username.');
 
-		$form->addPassword('password', 'Password:')
+		$form->addPassword('password', 'Heslo:')
 			->setRequired('Please enter your password.');
 
-		$form->addCheckbox('remember', 'Keep me signed in');
+		$form->addCheckbox('remember', 'Zapamatovat si');
 
 		$form->addSubmit('send', 'Sign in');
 
@@ -31,8 +26,6 @@ class SignPresenter extends BasePresenter
 		$form->onSuccess[] = $this->signInFormSubmitted;
 		return $form;
 	}
-
-
 
 	public function signInFormSubmitted($form)
 	{
@@ -54,12 +47,10 @@ class SignPresenter extends BasePresenter
 		$this->redirect('Homepage:');
 	}
 
-
-
 	public function actionOut()
 	{
 		$this->getUser()->logout();
-		$this->flashMessage('You have been signed out.');
+		$this->flashMessage('Odhlášený uživatel.');
 		$this->redirect('in');
 	}
 

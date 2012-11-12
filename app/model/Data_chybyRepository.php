@@ -8,18 +8,9 @@ class Data_chybyRepository extends Repository
 	/** @var string */
 	protected $tableName = 'data_chyby';
 
-	/**
-	 * @return Nette\Database\Table\Selection
-	 */
-	public function tasksOf(Nette\Database\Table\ActiveRow $list)
-	{
-		return $list->related('task')->limit(2);
-	}
-
-
-	public function findAllByDatum()
+	public function getAlarmy($regulator)
 	{ 
-		return $this->getTable()->limit(3);
+		return $this->findBy(array('regulator' => $regulator))->order('datum')->limit(18);
 	}
 
 }

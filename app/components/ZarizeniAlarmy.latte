@@ -1,0 +1,15 @@
+{snippet}
+<table class="detail">
+   <tr>
+	<th>Datum</th>
+	<th>Chyba</th>
+    </tr>
+    {foreach $alarmy as $value}
+    <tr>
+	<td>{$value->datum|date:'%d.%m.%Y %H:%M:%S'}</td>
+	<td>{$value->chyba}</td>
+	<td><a class="ajax" n:href="Plus! 1, $value->id">Zpět</a>
+    </tr>
+    {/foreach}
+</table>
+{/snippet}

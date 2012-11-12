@@ -1,11 +1,13 @@
 {var $robots = noindex}
 
 {block #content}
-
-<h1 n:block="title">Přihlášení</h1>
-
+<div id="banner">
+    <h1 n:block=title>Alsico control center</h1>
+</div>
+<div id="content">
 {form signInForm}
-<div class="sign-in-form">
+    <div id="dialog">
+    <div class="sign-in-form">
 	{control $form errors}
 
 	<div class="pair">
@@ -23,5 +25,11 @@
 	<div class="pair">
 		<div class="input">{input send}</div>
 	</div>
+    </div>
 </div>
+</div>
+
 {/form}
+
+
+

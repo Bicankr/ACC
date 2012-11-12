@@ -27,10 +27,18 @@
 </head>
 
 <body>
+    <div id="header">
+	<div id="header-inner">
+		<div class="user" n:if="$user->isLoggedIn()">
+			<span class="icon user">{$user->getIdentity()->name}</span> |
+			<a n:href="User:password***">Změna hesla</a> |
+			<a n:href="Sign:out">Odhlásit se</a>
+		</div>
+	</div>
+</div>
 	<script> document.body.className+=' js' </script>
 
 	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
-
 	{include #content}
 </body>
 </html>

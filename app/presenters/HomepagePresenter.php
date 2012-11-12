@@ -4,9 +4,9 @@ class HomepagePresenter extends BasePresenter {
 
     private $zarizeniRepository;
     private $c1Repository;
-
     private $data_fazeRepository;
     private $data_globalRepository;
+    private $data_chybyRepository;
     private $id_zarizeni = 0;
     /** @persistent */
     public $menu;
@@ -22,6 +22,7 @@ class HomepagePresenter extends BasePresenter {
 	$this->c1Repository = $this->context->zarizeniRepository;
 	$this->data_fazeRepository = $this->context->data_fazeRepository;
 	$this->data_globalRepository = $this->context->data_globalRepository;
+	$this->data_chybyRepository = $this->context->data_chybyRepository;
     }
 
     public function renderDefault($id = 0) {
@@ -53,6 +54,10 @@ class HomepagePresenter extends BasePresenter {
 
     public function createComponentZarizeniHodnoty() {
 	return new Todo\ZarizeniHodnotyControl($this->zarizeniRepository->FindById($this->id_zarizeni), $this->data_fazeRepository, $this->data_globalRepository);
+    }
+
+    public function createComponentZarizeniAlarmy() {
+	return new Todo\ZarizeniAlarmyControl($this->data_chybyRepository, $this->id_zarizeni);
     }
 
     public function createComponentZarizeniGrafy() {
