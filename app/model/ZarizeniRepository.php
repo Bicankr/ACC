@@ -17,6 +17,14 @@ class ZarizeniRepository extends Repository
     {
 	return $this->findAll()->where('id', $id)->fetch();
     }
-
+    
+    public function updateZarizeni($zarizeni_id, $nazev, $telefon, $ip)
+    {
+	$a = $this->find($zarizeni_id);
+	
+	$a->update(array('nazev' => $nazev, 'telefon'=> $telefon, 'ip' => $ip));
+	
+	return null;
+    }
 
 }

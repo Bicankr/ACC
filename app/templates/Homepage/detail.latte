@@ -12,6 +12,7 @@
 	    <td><a n:href="menu! 'Ovládání'">Ovládání</a></td>
 	    <td><a n:href="menu! 'Grafy'">Grafy</a></td>
 	    <td><a n:href="menu! 'Export'">Export</a></td>
+	    <td><a n:href="menu! 'Editace'">Editace</a></td>
 	    <td><a n:href="menu! 'Zpět'">Zpět</a></td>
 	</tr></table>
     <h1 style="font-size: 25pt;">{$menu}</h1>
@@ -26,6 +27,9 @@
     {/if}
     {if ($menu == 'Alarmy')}
 	{control zarizeniAlarmy}
+    {/if}
+    {if ($menu == 'Editace')}
+	{control zarizeniEditace}
     {/if}
 </div>
 <script>
