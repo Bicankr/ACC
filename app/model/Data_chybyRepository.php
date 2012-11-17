@@ -1,8 +1,6 @@
 <?php
 namespace Todo;
 
-use Nette;
-
 class Data_chybyRepository extends Repository
 {
 	/** @var string */
@@ -10,7 +8,6 @@ class Data_chybyRepository extends Repository
 
 	public function getAlarmy($regulator)
 	{ 
-		return $this->findBy(array('regulator' => $regulator))->order('datum')->limit(18);
+	    return $this->findBy(array('regulator' => $regulator))->order('datum DESC')->limit(18);
 	}
-
 }

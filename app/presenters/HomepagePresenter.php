@@ -1,4 +1,7 @@
 <?php
+use Nette\Diagnostics\Debugger;
+
+Debugger::enable(Debugger::DEVELOPMENT); // aktivujeme Laděnku
 
 class HomepagePresenter extends BasePresenter {
 
