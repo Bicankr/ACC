@@ -73,12 +73,18 @@ class HomepagePresenter extends BasePresenter {
 		->addRule(Form::FILLED, 'Je nutné zadat telefonní číslo zařízení.');
 	$form->addText('ip', 'IP adresa:', 40, 100)
 		->addRule(Form::FILLED, 'Je nutné zadat IP adresu zařízení.');
+	$form->addText('vyrobni_cislo', 'Výrobní číslo:', 40, 100)
+		->addRule(Form::FILLED, 'Je nutné zadat IP adresu zařízení.');
+	$form->addText('umisteni', 'Umístění:', 40, 100)
+		->addRule(Form::FILLED, 'Je nutné zadat IP adresu zařízení.');
 	$form->addHidden('id');
 	$form->addSubmit('create', 'Uložit');
 	$form->setDefaults(array(
 	    'id' => $this->id_zarizeni, 
 	    'nazev' => $zarizeni['nazev'], 
 	    'telefon' => $zarizeni['telefon'], 
+	    'vyrobni_cislo' => $zarizeni['vyrobni_cislo'], 
+	    'umisteni' => $zarizeni['umisteni'], 
 	    'ip' => $zarizeni['ip'])
 	);
 	$form->onSuccess[] = $this->EditaceFormSubmitted;
@@ -87,7 +93,7 @@ class HomepagePresenter extends BasePresenter {
 
     public function EditaceFormSubmitted(Form $form) {
 		//die(sprintf('%s', $this->id_zarizeni));
-	$this->zarizeniRepository->updateZarizeni($form->values->id, $form->values->nazev, $form->values->telefon, $form->values->ip);
+	$this->zarizeniRepository->updateZarizeni($form->values->id, $form->values->nazev, $form->values->telefon, $form->values->ip, $form->values->vyrobni_cislo, $form->values->umisteni);
 	$this->flashMessage('Editace zařízení.', 'success');
 	$this->redirect('this');
     }
