@@ -1,35 +1,34 @@
 {var $robots = noindex}
 
 {block #content}
-<div id="banner">
-    <h1 n:block=title>Alsico control center</h1>
-</div>
 <div id="content">
 {form signInForm}
     <div id="dialog">
-    <div class="sign-in-form">
+	<div class="sign-in-form">
 	{control $form errors}
 
-	<div class="pair">
+	    <div class="pair">
 		{label username /}
 		<div class="input">{input username}</div>
-	</div>
-	<div class="pair">
+	    </div>
+	    
+	    <div class="pair">
 		{label password /}
 		<div class="input">{input password}</div>
-	</div>
-	<div class="pair">
-		<div class="input">{input remember} {label remember /}</div>
-	</div>
+	    </div>
 
-	<div class="pair">
+	    <div class="pair">
+		<div class="input">{input remember} {label remember /}</div>
+	    </div>
+
+	    <div class="pair">
 		<div class="input">{input send}</div>
+	    </div>
 	</div>
     </div>
-</div>
+{/form}
 </div>
 
-{/form}
 
 
 

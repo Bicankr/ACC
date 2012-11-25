@@ -12,6 +12,7 @@ class HomepagePresenter extends BasePresenter {
     private $data_fazeRepository;
     private $data_globalRepository;
     private $data_chybyRepository;
+    private $user_logRepository;
     private $id_zarizeni = 0;
 
     /** @persistent */
@@ -29,27 +30,17 @@ class HomepagePresenter extends BasePresenter {
 	$this->data_fazeRepository = $this->context->data_fazeRepository;
 	$this->data_globalRepository = $this->context->data_globalRepository;
 	$this->data_chybyRepository = $this->context->data_chybyRepository;
+	$this->user_logRepository = $this->context->user_logRepository;
     }
 
     public function renderDefault($id) {
 	//$this->id_zarizeni = $id;
+	$this->template->user_logRepository = $this->user_logRepository;
     }
 
     public function renderDetail($id = 0) {
 	$this->id_zarizeni = $id;
 	$this->template->menu = $this->menu;
-    }
-
-    function handleChangeFoo1() {
-	if ($this->isAjax()) {
-	    //$this->invalidateControl("pokus");
-	}
-    }
-
-    function handleChangeFoo2() {
-	if ($this->isAjax()) {
-	    $this->invalidateControl("pokus");
-	}
     }
 
     public function createComponentZarizeni() {

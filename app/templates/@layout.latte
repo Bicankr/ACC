@@ -14,8 +14,7 @@
 	<meta name="description" content="Alsico control center">
 	<meta name="robots" content="{$robots}" n:ifset="$robots">
 
-	<title>{block title|striptags|upper}Alsico control center{/block}</title>
-
+	
 	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css" type="text/css">
 	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css" type="text/css">
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico" type="image/x-icon">
@@ -27,18 +26,23 @@
 </head>
 
 <body>
-    <div id="header">
-	<div id="header-inner">
-		<div class="user" n:if="$user->isLoggedIn()">
-			<span class="icon user">{$user->getIdentity()->name}</span> |
-			<a n:href="User:password***">Změna hesla</a> |
-			<a n:href="Sign:out">Odhlásit se</a>
-		</div>
-	</div>
-</div>
-	<script> document.body.className+=' js' </script>
+    <script> document.body.className+=' js' </script>
 
-	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
-	{include #content}
+    <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+    <div id="banner">
+	<div id="header">
+	    <div id="header-inner">
+		<div class="user" n:if="$user->isLoggedIn()">
+		    <span class="icon user">{$user->getIdentity()->name}</span> |
+		    <a n:href="User:password***">Změna hesla</a> |
+		    <a n:href="Sign:out">Odhlásit se</a><br/>
+		    <span class="icon user">Poslední přihlášení - {$user_logRepository->findLastLogin($user->getIdentity()->id)}</span>
+		</div>
+	    </div>
+	</div>
+	<h1 n:block=title>Alsico control center</h1>
+    </div>
+
+    {include #content}
 </body>
 </html>

@@ -18,7 +18,7 @@ a:hover, a:active, a:focus { background-color: #006aeb; text-decoration: none; c
     border-bottom-color: black;
     border-top-color: black;
 }
-#banner h1 { color: white; font-size: 50px; line-height: 121px; margin: 0; padding-left: 40px;  text-shadow: 1px 1px 0 rgba(0, 0, 0, .9); }
+#banner h1 { color: white; font-size: 50px; line-height: 70px; margin: 0; padding-left: 40px;  text-shadow: 1px 1px 0 rgba(0, 0, 0, .9); }
 
 #content { background: white; border: 1px solid #eff4f7; border-radius: 0 0 12px 12px; padding: 10px 40px; 
     height: 500px;
